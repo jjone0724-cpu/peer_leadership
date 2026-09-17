@@ -1,0 +1,15 @@
+# 비밀 값은 어떤 경우에도 커밋하지 않는다
+.env
+.env.*
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 에디터
+.vscode/
+.idea/
+
+# 의존성 (이 저장소에는 없어야 한다)
+node_modules/
