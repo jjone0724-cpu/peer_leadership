@@ -1,0 +1,11 @@
+Maru Buri
+
+Copyright: NAVER Corporation and NAVER Cultural Foundation.
+
+NAVER's font terms allow free personal and commercial use, except selling the
+font itself. Redistribution, bundling, and modification require including the
+copyright and license notice. See the official terms for the complete license:
+https://hangeul.naver.com/font
+
+Official typeface page: https://hangeul.naver.com/font/maru
+Webfont file source: https://github.com/fonts-archive/MaruBuri
