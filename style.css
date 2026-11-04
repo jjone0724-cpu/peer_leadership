@@ -56,12 +56,12 @@ font-display: swap;
      sources/ 의 사진에서 스포이드로 집는다.
      바꿀 때 이 블록만 고치면 사이트 전체가 따라온다.
   */
-  --paper:  #f7f3e8;   /* 배경 */
-  --ink:    #26362d;   /* 본문 */
-  --ink-2:  #4e5b50;   /* 보조 텍스트 */
-  --ink-3:  #626d63;   /* 캡션, 날짜 */
-  --rule:   #d6d9cf;   /* 선 */
-  --mark:   #9d4d35;   /* 강조 */
+  --paper:  #ffffff;   /* 배경 */
+  --ink:    #111111;   /* 본문 */
+  --ink-2:  #333333;   /* 보조 텍스트 */
+  --ink-3:  #666666;   /* 캡션, 날짜 */
+  --rule:   #d9d9d9;   /* 선 */
+  --mark:   #111111;   /* 강조 */
 
   /* --- 간격 -------------------------------------------------
      임의의 px 값을 그때그때 쓰지 않는다.
@@ -95,7 +95,7 @@ font-display: swap;
      지금은 시스템 폰트만 쓰고 있다. 이 상태로 두지 말 것.
      웹폰트는 CDN으로 불러오지 말고 fonts/ 에 woff2 로 넣는다.
   */
-  --font-body: "Gowun Dodum", system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "SUIT", system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --font-display: var(--font-body);
 
   /* --- 본문 폭 ----------------------------------------------
@@ -170,9 +170,9 @@ a {
    ------------------------------------------------------------ */
 
 .wrap {
-  max-width: var(--measure);
+  max-width: 48em;
   margin: 0 auto;
-  padding: var(--space-6) var(--space-5);
+  padding: var(--space-7) var(--space-5);
 }
 
 /* 이어지는 내용은 좁게 두고, 서로 다른 섹션 사이에는 넓은 간격을 둔다. */
@@ -200,26 +200,19 @@ h1, h2, h3 {
   margin: 0 0 var(--space-3);
 }
 
-h1 { font-size: var(--text-xl); }
+h1 { font-size: clamp(2.25rem, 7vw, 4.5rem); }
 h2 { font-size: var(--text-l); }
 h3 { font-size: var(--text-m); }
 
 h1 {
   color: var(--mark);
-  background-image: linear-gradient(100deg, var(--mark), var(--ink), var(--mark));
-  background-size: 200% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow:
-    var(--space-1) var(--space-1) var(--space-1) var(--ink),
-    var(--space-2) var(--space-2) var(--space-1) var(--mark);
-  animation: title-flare 5s ease-in-out infinite alternate;
+  background-image: none;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
 }
 
 h2 {
   color: var(--mark);
-  text-shadow: var(--space-1) var(--space-1) var(--space-1) var(--ink);
 }
 
 h3 { color: var(--ink-2); }
@@ -266,6 +259,70 @@ ul.plain h3 {
 
 ul.plain .meta {
   margin: 0;
+}
+
+/* 사용자가 요청한 Apple/Naver 참고 방향: 정보량을 나누고 스크롤 순서로 읽히게 한다. */
+body > .wrap { display: none; }
+
+.site-shell { min-height: 100vh; }
+
+.site-nav {
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 72em;
+  padding: var(--space-4) var(--space-5);
+}
+
+.site-name, .nav-links a { text-decoration: none; }
+.site-name { font-weight: 700; }
+.nav-links { display: flex; gap: var(--space-5); }
+.nav-links a { color: var(--ink-2); font-size: var(--text-s); }
+
+.new-wrap { margin: 0 auto; max-width: 72em; padding: 0 var(--space-5); }
+.hero { max-width: 38em; padding: 12rem 0 14rem; }
+.eyebrow { color: var(--ink-3); font-size: 0.75rem; letter-spacing: 0.08em; margin: 0 0 var(--space-4); }
+.hero h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: 1.08; margin-bottom: var(--space-6); }
+.hero h1 em { font-style: normal; font-weight: 400; }
+.hero .lede { font-size: var(--text-l); max-width: 30em; }
+.text-link { display: inline-block; font-weight: 700; margin-top: var(--space-4); }
+.hero-figure { margin: var(--space-7) 0 0; }
+.hero-figure img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+figcaption { color: var(--ink-3); font-size: var(--text-s); margin-top: var(--space-2); }
+
+.section-block { border-top: 1px solid var(--ink); margin: 0; padding: 7rem 0; }
+.section-heading { margin-bottom: var(--space-7); max-width: 28em; }
+.section-heading h2 { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.15; }
+.featured-entry { border-top: 1px solid var(--rule); max-width: 42em; padding: var(--space-5) 0 var(--space-7); }
+.featured-entry h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: var(--space-3); }
+.entry-image { margin: var(--space-5) 0; max-width: 22em; width: 100%; }
+details { border-top: 1px solid var(--rule); margin-top: var(--space-6); padding-top: var(--space-3); }
+summary { cursor: pointer; font-weight: 700; }
+.entry-list { border-top: 1px solid var(--rule); list-style: none; margin: 0; padding: 0; }
+.entry-list li { align-items: start; border-bottom: 1px solid var(--rule); display: flex; gap: var(--space-5); padding: var(--space-5) 0; }
+.list-image { aspect-ratio: 4 / 3; flex: 0 0 10rem; object-fit: cover; width: 10rem; }
+.entry-list h3 { margin-bottom: var(--space-1); }
+.entry-list p:last-child { margin: 0; }
+.place-list { border-top: 1px solid var(--rule); }
+.place-list a { align-items: center; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; padding: var(--space-5) 0; text-decoration: none; }
+.place-list a span:first-child { font-size: var(--text-l); }
+.about-block { display: grid; gap: var(--space-7); grid-template-columns: 1fr 1fr; }
+.about-block .section-heading { margin: 0; }
+.about-block > p { margin: 0; max-width: 28em; }
+.about-image { align-self: end; grid-column: 1 / -1; margin-top: var(--space-4); max-height: 30rem; object-fit: cover; width: 100%; }
+.new-wrap footer { border-top: 1px solid var(--rule); padding: var(--space-5) 0 var(--space-7); }
+
+@media (max-width: 600px) {
+  .site-nav { align-items: flex-start; flex-direction: column; gap: var(--space-3); }
+  .nav-links { gap: var(--space-4); }
+  .hero { padding: 8rem 0 9rem; }
+  .section-block { padding: 5rem 0; }
+  .about-block { display: block; }
+  .about-block .section-heading { margin-bottom: var(--space-6); }
+  .entry-list li { display: block; }
+  .list-image { margin-bottom: var(--space-4); width: 100%; }
 }
 
 /* ============================================================
