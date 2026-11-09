@@ -62,10 +62,51 @@
 
         <section class="section-block" id="places" aria-labelledby="places-title">
           <div class="section-heading"><p class="eyebrow">02 · INDEX</p><h2 id="places-title">여행지별로 보기</h2></div>
-          <div class="place-list">
-            <a href="#latest"><span>제주</span><span class="meta">바다 · 04</span></a>
-            <a href="#latest"><span>부산</span><span class="meta">도시의 가장자리 · 03</span></a>
-            <a href="#latest"><span>강릉</span><span class="meta">느린 산책 · 02</span></a>
+          <nav class="place-tabs" aria-label="여행 국가">
+            <a class="place-tab is-active" href="#korea">한국</a>
+            <a class="place-tab" href="#japan">일본</a>
+          </nav>
+
+          <div class="place-panel" id="korea" aria-labelledby="korea-title">
+            <h3 id="korea-title">한국</h3>
+            <figure class="map-figure">
+              <div class="map-wrap">
+                <img src="images/urbanbrush-20210220212407818839.jpg" width="1056" height="1196" alt="대한민국 지역 지도. 서울, 대구, 울산, 부산, 경상남도, 독도가 표시되어 있습니다.">
+                <a class="map-hotspot hotspot-seoul" href="#place-seoul" aria-label="서울 사진 보기"><span>서울</span></a>
+                <a class="map-hotspot hotspot-daegu" href="#place-daegu" aria-label="대구 사진 보기"><span>대구</span></a>
+                <a class="map-hotspot hotspot-ulsan" href="#place-ulsan" aria-label="울산 사진 보기"><span>울산</span></a>
+                <a class="map-hotspot hotspot-busan" href="#place-busan" aria-label="부산 사진 보기"><span>부산</span></a>
+                <a class="map-hotspot hotspot-gyeongnam" href="#place-gyeongnam" aria-label="경상남도 사진 보기"><span>경남</span></a>
+                <a class="map-hotspot hotspot-dokdo" href="#place-dokdo" aria-label="독도 사진 보기"><span>독도</span></a>
+                <a class="map-hotspot hotspot-jeju" href="#place-jeju" aria-label="제주도 사진 보기"><span>제주</span></a>
+              </div>
+              <figcaption>지도에서 지역을 선택하면 해당 지역의 기록으로 이동합니다.</figcaption>
+            </figure>
+
+            <div class="place-list place-gallery" aria-label="한국 지역 기록">
+              <article id="place-seoul" class="place-entry"><div class="place-photo" role="img" aria-label="서울 사진 자리"></div><h4>서울</h4><p class="meta">사진 준비 중</p></article>
+              <article id="place-daegu" class="place-entry"><div class="place-photo" role="img" aria-label="대구 사진 자리"></div><h4>대구</h4><p class="meta">사진 준비 중</p></article>
+              <article id="place-ulsan" class="place-entry"><div class="place-photo" role="img" aria-label="울산 사진 자리"></div><h4>울산</h4><p class="meta">사진 준비 중</p></article>
+              <article id="place-busan" class="place-entry"><div class="place-photo" role="img" aria-label="부산 사진 자리"></div><h4>부산</h4><p class="meta">사진 준비 중</p></article>
+              <article id="place-dokdo" class="place-entry"><div class="place-photo" role="img" aria-label="독도 사진 자리"></div><h4>독도</h4><p class="meta">사진 준비 중</p></article>
+              <article id="place-jeju" class="place-entry"><div class="place-photo" role="img" aria-label="제주도 사진 자리"></div><h4>제주도</h4><p class="meta">사진 준비 중</p></article>
+              <article id="place-gyeongnam" class="place-entry place-entry-wide">
+                <div class="place-photo" role="img" aria-label="경상남도 사진 자리"></div>
+                <h4>경상남도</h4>
+                <p class="meta">사진을 볼 지역을 선택하세요.</p>
+                <div class="subplace-list">
+                  <a href="#place-changwon">창원</a>
+                  <a href="#place-gimhae">김해</a>
+                </div>
+              </article>
+              <article id="place-changwon" class="place-entry place-entry-child"><div class="place-photo" role="img" aria-label="창원 사진 자리"></div><h4>창원</h4><p class="meta">사진 준비 중</p></article>
+              <article id="place-gimhae" class="place-entry place-entry-child"><div class="place-photo" role="img" aria-label="김해 사진 자리"></div><h4>김해</h4><p class="meta">사진 준비 중</p></article>
+            </div>
+          </div>
+
+          <div class="place-panel place-panel-japan" id="japan" aria-labelledby="japan-title">
+            <h3 id="japan-title">일본</h3>
+            <p>일본 여행 사진을 준비 중입니다.</p>
           </div>
         </section>
 
@@ -73,6 +114,21 @@
           <div class="section-heading"><p class="eyebrow">03 · ABOUT</p><h2 id="about-title">같이 보고,<br>다르게 기억하기</h2></div>
           <p>이곳은 여행 브이로그와 후기를 모아두는 개인 기록장입니다. 영상 속 장면을 다시 떠올리며, 각자의 여행 이야기도 나눌 수 있으면 좋겠습니다.</p>
           <img class="about-image" src="images/travel-05.jpg" width="1600" height="1200" alt="강과 다리가 보이는 도시의 해 질 무렵 풍경">
+        </section>
+        <section class="section-block comment-block" id="comments" aria-labelledby="comments-title">
+          <div class="section-heading">
+            <p class="eyebrow">04 · COMMENTS</p>
+            <h2 id="comments-title">여행 이야기를 남겨주세요</h2>
+          </div>
+          <form class="comment-form" id="comment-form">
+            <label for="comment-name">이름</label>
+            <input id="comment-name" name="name" type="text" maxlength="30" required>
+            <label for="comment-text">댓글</label>
+            <textarea id="comment-text" name="comment" rows="4" maxlength="500" required></textarea>
+            <button type="submit">댓글 남기기</button>
+            <p class="meta comment-note">댓글은 이 브라우저에만 저장됩니다.</p>
+          </form>
+          <ol class="comment-list" id="comment-list" aria-live="polite"></ol>
         </section>
       </main>
 
@@ -130,8 +186,7 @@
 
   </div>
 
-  <!-- script.js 는 필요할 때만 만든다.
-       없어도 이 사이트는 동작해야 한다. -->
+  <script src="script.js" defer></script>
 
 </body>
 </html>
