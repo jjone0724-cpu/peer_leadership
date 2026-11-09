@@ -63,6 +63,12 @@ font-display: swap;
   --rule:   #d9d9d9;   /* 선 */
   --mark:   #111111;   /* 강조 */
 
+  /* 출처: sources/스크린샷 2026-11-04 180814.jpg 의 건물 외벽·차양 색.
+     620,520 부근의 짙은 갈색을 목재 프레임의 기본색으로 사용한다. */
+  --frame-wood:       #7b6035;
+  --frame-wood-dark:  #5f4f42;
+  --frame-wood-light: #c1b29d;
+
   /* --- 간격 -------------------------------------------------
      임의의 px 값을 그때그때 쓰지 않는다.
      아래 여덟 단계 안에서만 고른다.
@@ -293,9 +299,27 @@ body > .wrap { display: none; }
 /* 출처: sources/스크린샷 2026-11-04 180814.jpg 의 사진과 캡션 사이 여백.
    사진을 본문과 붙이지 않고 짧은 설명이 독립적으로 읽히게 한다. */
 figcaption { color: var(--ink-3); font-size: var(--text-s); line-height: 1.5; margin-top: var(--space-3); max-width: var(--measure); }
-/* 출처: sources/스크린샷 2026-11-04 180814.jpg 의 사진 주변 여백.
-   사용자가 요청한 액자 구성을 흰 여백과 얇은 선으로 구현한다. */
-.photo-frame { background: var(--paper); border: 1px solid var(--ink); padding: var(--space-2); }
+/* 출처: sources/스크린샷 2026-11-04 180814.jpg 의 사진 주변 여백과 갈색 건물 색.
+   사용자가 요청한 고풍스러운 나무 액자를 사진 크기에 맞는 목재결과 속지로 구현한다. */
+.photo-frame {
+  background:
+    var(--paper) padding-box,
+    repeating-linear-gradient(
+      104deg,
+      var(--frame-wood-dark) 0 var(--space-1),
+      var(--frame-wood) var(--space-1) var(--space-3),
+      var(--frame-wood-light) var(--space-3) var(--space-4),
+      var(--frame-wood) var(--space-4) var(--space-5)
+    ) border-box;
+  border: var(--space-2) solid transparent;
+  box-shadow: inset 0 0 0 1px var(--frame-wood-light), 0 0 0 1px var(--frame-wood-dark);
+  padding: var(--space-2);
+}
+
+.list-image.photo-frame {
+  border-width: var(--space-1);
+  padding: var(--space-1);
+}
 
 .section-block { border-top: 1px solid var(--ink); margin: 0; padding: 7rem 0; }
 /* 출처: sources/스크린샷 2026-11-04 180846.jpg 의 큰 제목 아래 분할선.
@@ -366,18 +390,8 @@ summary { cursor: pointer; font-weight: 700; }
 .about-block > p { margin: 0; max-width: 28em; }
 .about-image { align-self: end; grid-column: 1 / -1; margin-top: var(--space-4); max-height: 30rem; object-fit: cover; width: 100%; }
 .new-wrap footer { border-top: 1px solid var(--rule); padding: var(--space-5) 0 var(--space-7); }
-.comment-form { display: grid; gap: var(--space-2); max-width: 38em; }
-.comment-form label { font-weight: 700; margin-top: var(--space-3); }
-.comment-form input, .comment-form textarea { background: var(--paper); border: 1px solid var(--ink); color: var(--ink); font: inherit; padding: var(--space-2) var(--space-3); width: 100%; }
-.comment-form textarea { resize: vertical; }
-.comment-form button { background: var(--ink); border: 1px solid var(--ink); color: var(--paper); cursor: pointer; font: inherit; font-weight: 700; justify-self: start; margin-top: var(--space-3); padding: var(--space-2) var(--space-4); }
-.comment-form button:hover, .comment-form button:focus-visible { background: var(--paper); color: var(--ink); }
-.comment-note { margin: var(--space-2) 0 0; }
-.comment-list { border-top: 1px solid var(--rule); list-style: none; margin: var(--space-7) 0 0; max-width: 38em; padding: 0; }
-.comment-item { border-bottom: 1px solid var(--rule); padding: var(--space-4) 0; }
-.comment-item header { align-items: baseline; display: flex; gap: var(--space-3); justify-content: space-between; }
-.comment-item p { margin: var(--space-2) 0 0; white-space: pre-wrap; }
-.comment-delete { background: none; border: 0; color: var(--ink-3); cursor: pointer; font: inherit; padding: 0; text-decoration: underline; text-underline-offset: 0.2em; }
+.comment-link { background: var(--ink); border: 1px solid var(--ink); color: var(--paper); display: inline-block; font: inherit; font-weight: 700; padding: var(--space-3) var(--space-4); text-decoration: none; }
+.comment-link:hover, .comment-link:focus-visible { background: var(--paper); color: var(--ink); }
 
 @media (max-width: 600px) {
   .site-nav { align-items: flex-start; flex-direction: column; gap: var(--space-3); }
