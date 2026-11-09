@@ -290,10 +290,17 @@ body > .wrap { display: none; }
 .text-link { display: inline-block; font-weight: 700; margin-top: var(--space-4); }
 .hero-figure { margin: var(--space-7) 0 0; }
 .hero-figure img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
-figcaption { color: var(--ink-3); font-size: var(--text-s); margin-top: var(--space-2); }
+/* 출처: sources/스크린샷 2026-11-04 180814.jpg 의 사진과 캡션 사이 여백.
+   사진을 본문과 붙이지 않고 짧은 설명이 독립적으로 읽히게 한다. */
+figcaption { color: var(--ink-3); font-size: var(--text-s); line-height: 1.5; margin-top: var(--space-3); max-width: var(--measure); }
+/* 출처: sources/스크린샷 2026-11-04 180814.jpg 의 사진 주변 여백.
+   사용자가 요청한 액자 구성을 흰 여백과 얇은 선으로 구현한다. */
+.photo-frame { background: var(--paper); border: 1px solid var(--ink); padding: var(--space-2); }
 
 .section-block { border-top: 1px solid var(--ink); margin: 0; padding: 7rem 0; }
-.section-heading { margin-bottom: var(--space-7); max-width: 28em; }
+/* 출처: sources/스크린샷 2026-11-04 180846.jpg 의 큰 제목 아래 분할선.
+   제목과 다음 기록을 가느다란 선과 여백으로 분리해 스크롤 리듬을 만든다. */
+.section-heading { border-bottom: 1px solid var(--rule); margin-bottom: var(--space-7); max-width: 28em; padding-bottom: var(--space-5); }
 .section-heading h2 { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.15; }
 .featured-entry { border-top: 1px solid var(--rule); max-width: 42em; padding: var(--space-5) 0 var(--space-7); }
 .featured-entry h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: var(--space-3); }
@@ -318,9 +325,10 @@ summary { cursor: pointer; font-weight: 700; }
 .map-figure { margin: 0 0 var(--space-7); max-width: 40rem; }
 .map-wrap { position: relative; }
 .map-wrap img { width: 100%; }
-.map-hotspot { background: var(--mark); border: 2px solid var(--paper); border-radius: 50%; cursor: pointer; display: block; height: 0.75rem; opacity: 0; position: absolute; text-decoration: none; transform: translate(-50%, -50%); transition: opacity 160ms ease; width: 0.75rem; }
+.map-hotspot { align-items: center; background: transparent; border: 0; border-radius: 50%; cursor: pointer; display: grid; height: 2.75rem; opacity: 1; place-items: center; position: absolute; text-decoration: none; transform: translate(-50%, -50%); width: 2.75rem; z-index: 1; }
+.map-hotspot::before { background: var(--mark); border: 2px solid var(--paper); border-radius: 50%; content: ""; display: block; height: 0.75rem; width: 0.75rem; }
 .map-hotspot span { display: none; }
-.map-wrap:hover .map-hotspot, .map-hotspot:focus-visible { opacity: 1; }
+.map-hotspot:hover::before, .map-hotspot:focus-visible::before { height: 1rem; width: 1rem; }
 .hotspot-seoul { left: 40%; top: 25%; }
 .hotspot-daegu { left: 60%; top: 52.5%; }
 .hotspot-ulsan { left: 70%; top: 59%; }
@@ -332,8 +340,11 @@ summary { cursor: pointer; font-weight: 700; }
 .place-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .place-entry { border-bottom: 1px solid var(--rule); padding: var(--space-5) 0; scroll-margin-top: var(--space-6); }
 .place-entry:nth-child(odd) { margin-right: var(--space-5); }
-.place-entry h4 { font-size: var(--text-l); margin: 0 0 var(--space-1); }
-.place-entry .meta { margin: 0; }
+/* 출처: sources/스크린샷 2026-11-04 180954.jpg 의 지역명·보조 정보 정렬.
+   지역명은 왼쪽에 크게 두고, 보조 정보는 같은 기준선의 오른쪽에 둔다. */
+.place-entry-heading { align-items: baseline; display: flex; gap: var(--space-3); justify-content: space-between; }
+.place-entry h4 { font-size: var(--text-l); margin: 0; }
+.place-entry .meta { margin: 0; text-align: right; }
 .place-photo { aspect-ratio: 4 / 3; background-color: var(--rule); background-position: center; background-size: cover; margin: 0 0 var(--space-4); width: 100%; }
 #place-seoul .place-photo { background-image: url("images/place-seoul.jpg"); }
 #place-daegu .place-photo { background-image: url("images/place-daegu.jpg"); }
@@ -379,7 +390,7 @@ summary { cursor: pointer; font-weight: 700; }
   .list-image { margin-bottom: var(--space-4); width: 100%; }
   .place-gallery { display: block; }
   .place-entry:nth-child(odd), .place-entry-wide { margin-right: 0; }
-  .map-hotspot { height: 0.75rem; width: 0.75rem; }
+  .map-hotspot { height: 2.75rem; width: 2.75rem; }
 }
 
 /* ============================================================
